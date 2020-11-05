@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Linux software tools"
+categories: linux
 ---
 
 ###### 编辑软件

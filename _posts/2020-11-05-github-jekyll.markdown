@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "github+jekyll"
+title: "Github+Jekyll个人博客"
 ---
 
 ###### 安装
