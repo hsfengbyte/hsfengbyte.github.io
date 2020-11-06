@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Pulsar"
+---
+
+下载地址：<http://pulsar.apache.org/download/>
+
+###### 启动
+
+单机模式：
+
+```shell
+bin/pulsar standalone
+```
+
+Consume一条消息
+
+```shell
+bin/pulsar-client consume my-topic -s "first-subscription"
+```
+
+Produce一条消息
+
+```shell
+bin/pulsar-client produce my-topic --messages "hello-pulsar"
+```
+
