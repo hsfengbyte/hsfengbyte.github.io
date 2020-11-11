@@ -12,8 +12,8 @@ sudo apt install qemu qemu-user-static
 
 ubuntu core: <http://cdimage.ubuntu.com/ubuntu-base/releases/>
 
-下载ubuntu-base-20.10-base-arm64.tar.gz:
+下载ubuntu-base-16.04.6-base-arm64.tar.gz:
 
 ```shell
-wget -c http://cdimage.ubuntu.com/ubuntu-base/releases/20.10/release/ubuntu-base-20.10-base-arm64.tar.gz
+wget -c http://cdimage.ubuntu.com/ubuntu-base/releases/16.04.1/release/ubuntu-base-16.04.6-base-arm64.tar.gz
 ```
