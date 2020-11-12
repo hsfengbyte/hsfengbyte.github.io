@@ -18,7 +18,17 @@ deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe m
 #deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 ```
 
-###### 2. Ubuntu-18.04
+###### 2. Ubuntu-20.04-arm64
+
+```shell
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-proposed main restricted universe multiverse
+```
+
+###### 3. Ubuntu-18.04
 
 ```shell
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
@@ -33,7 +43,7 @@ deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe 
 #deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
 ```
 
-###### 3. Ubuntu-16.04-arm64
+###### 4. Ubuntu-16.04-arm64
 
 ```shell
 deb https://mirrors.aliyun.com/ubuntu-ports xenial main restricted universe multiverse
@@ -43,7 +53,7 @@ deb https://mirrors.aliyun.com/ubuntu-ports xenial-proposed main restricted univ
 deb https://mirrors.aliyun.com/ubuntu-ports xenial-backports main restricted universe multiverse
 ```
 
-###### 4. Ubuntu-16.04
+###### 5. Ubuntu-16.04
 
 ```shell
 deb http://mirrors.aliyun.com/ubuntu/ xenial main
