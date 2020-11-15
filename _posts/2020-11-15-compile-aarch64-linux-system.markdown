@@ -6,14 +6,19 @@ title: 编译aarch64 linux系统
 ###### 安装软件
 
 ```shell
-sudo apt install qemu qemu-system make
+sudo apt install qemu qemu-system
+sudo apt install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev bison flex libelf-dev bc
 ```
 
 ###### 内核编译
 
-内核下载：<https://www.kernel.org>
+内核下载：
 
-交叉编译器下载：<https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads>
+<https://www.kernel.org>
+
+交叉编译器下载：
+
+<https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads>
 
 ```shell
 # update .bashrc
