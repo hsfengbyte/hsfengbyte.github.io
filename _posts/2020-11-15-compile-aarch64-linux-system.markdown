@@ -9,21 +9,17 @@ title: 编译aarch64 linux系统
 sudo apt install qemu qemu-system make
 ```
 
-###### 内核
-
-下载地址：<https://www.kernel.org>
-
-###### 交叉编译器
-
-下载地址：<https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads>
-
-```shell
-source .bashrc # 更新.bashrc
-```
-
 ###### 内核编译
 
+内核下载：<https://www.kernel.org>
+
+交叉编译器下载：<https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads>
+
 ```shell
+# update .bashrc
+source .bashrc
+
+# linux compile
 make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
 make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
@@ -34,24 +30,44 @@ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
 run with nographic:
 
 ```shell
-sudo qemu-system-aarch64 -machine virt -cpu cortex-a53 -m 1024M -kernel path/arch/arm64/boot/zImage -nographic -append "root=/dev/mmcblk0 console=ttyAMA0" -sd path/ubuntu-20.04-rootfs.ext4
+sudo qemu-system-aarch64 \
+	-M virt \
+	-cpu cortex-a53 \
+	-m 1024M \
+	-kernel path/arch/arm64/boot/zImage \
+	-nographic \
+	-append "root=/dev/mmcblk0 console=ttyAMA0" \
+	-sd path/ubuntu-20.04-rootfs.ext4
 ```
 
 run with graphic:
 
 ```shell
-sudo qemu-system-arm -machine virt -cpu cortex-a53 -m 1024M -kernel path/arch/arm64/boot/zImage -append "root=/dev/mmcblk0 rw console=tty0" -sd path/ubuntu-20.04-rootfs.ext4
+sudo qemu-system-arm \
+	-M virt \
+	-cpu cortex-a53 \
+	-m 1024M \
+	-kernel path/arch/arm64/boot/zImage \
+	-append "root=/dev/mmcblk0 rw console=tty0" \
+	-sd path/ubuntu-20.04-rootfs.ext4
 ```
 
 run with net:
 
 ```shell
-sudo qemu-system-arm -machine virt -cpu cortex-a53 -m 1024M -kernel path/arch/arm64/boot/zImage -append "root=/dev/mmcblk0 rw console=tty0" -sd path/ubuntu-20.04-rootfs.ext4 -net nic -net tap,ifname=tap0
+sudo qemu-system-arm \
+	-M virt \
+	-cpu cortex-a53 \
+	-m 1024M \
+	-kernel path/arch/arm64/boot/zImage \
+	-append "root=/dev/mmcblk0 rw console=tty0" \
+	-sd path/ubuntu-20.04-rootfs.ext4 \
+	-net nic -net tap,ifname=tap0
 ```
 
 `备注`：qemu -dts xxx.dtb
 
-###### 桥接网络
+###### 网络设置
 
 添加br0和tap0:
 
