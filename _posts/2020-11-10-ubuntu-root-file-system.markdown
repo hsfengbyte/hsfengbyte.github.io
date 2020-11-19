@@ -22,6 +22,7 @@ wget -c http://cdimage.ubuntu.com/ubuntu-base/releases/20.04.1/release/ubuntu-ba
 
 ```shell
 dd if=/dev/zero of=ubuntu-20.04-rootfs.img bs=1M count=1024
+mkfs.ext4 -F -L ROOTFS ubuntu-20.04-rootfs.img
 mkdir ubuntu
 sudo mount ubuntu-20.04-rootfs.img ubuntu
 sudo tar -xvf ubuntu-base-20.04.1-base-arm64.tar.gz -C ubuntu
