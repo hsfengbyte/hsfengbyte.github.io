@@ -79,15 +79,32 @@ sudo qemu-system-arm \
 ```shell
 # tunctl install
 sudo apt install uml-utilities
-add virtual net card tap0:
-tunctl add tap0
-delete tap0:
-tunctl del tap0
+# tunctl usage:
+# Create: tunctl [-b] [-u owner] [-g group] [-t device-name] [-f tun-clone-device]
+# Delete: tunctl -d device-name [-f tun-clone-device]
 
 # brctl intsll
 sudo apt install bridge-utils
-To manually create a bridge interface br0:
-brctl addbr br0
+# To manually create a bridge interface br0:
+Usage: brctl [commands]
+commands:
+        addbr           <bridge>                add bridge
+        delbr           <bridge>                delete bridge
+        addif           <bridge> <device>       add interface to bridge
+        delif           <bridge> <device>       delete interface from bridge
+        hairpin         <bridge> <port> {on|off}        turn hairpin on/off
+        setageing       <bridge> <time>         set ageing time
+        setbridgeprio   <bridge> <prio>         set bridge priority
+        setfd           <bridge> <time>         set bridge forward delay
+        sethello        <bridge> <time>         set hello time
+        setmaxage       <bridge> <time>         set max message age
+        setpathcost     <bridge> <port> <cost>  set path cost
+        setportprio     <bridge> <port> <prio>  set port priority
+        show            [ <bridge> ]            show a list of bridges
+        showmacs        <bridge>                show a list of mac addrs
+        showstp         <bridge>                show bridge stp info
+        stp             <bridge> {on|off}       turn stp on/off
+
 
 # To add interface tap0 and tap1 to the bridge br0
 brctl addif br0 tap0
@@ -139,3 +156,51 @@ ip addr add 192.168.0.1/24 dev br0
 
 #brctl addif br0 tap0
 ```
+
+/etc/qemu-ifup
+
+```shell
+#! /bin/sh
+# Script to bring a network (tap) device for qemu up.
+# The idea is to add the tap device to the same bridge
+# as we have default routing to.
+
+# in order to be able to find brctl
+PATH=$PATH:/sbin:/usr/sbin
+ip=$(which ip)
+
+if [ -n "$ip" ]; then
+   ip link set "$1" up
+else
+   brctl=$(which brctl)
+   if [ ! "$ip" -o ! "$brctl" ]; then
+     echo "W: $0: not doing any bridge processing: neither ip nor brctl utility not found" >&2
+     exit 0
+   fi
+   ifconfig "$1" 0.0.0.0 up
+fi
+
+switch=$(ip route ls | \
+    awk '/^default / {
+          for(i=0;i<NF;i++) { if ($i == "dev") { print $(i+1); next; } }
+         }'
+        )
+
+# only add the interface to default-route bridge if we
+# have such interface (with default route) and if that
+# interface is actually a bridge.
+# It is possible to have several default routes too
+for br in $switch; do
+    if [ -d /sys/class/net/$br/bridge/. ]; then
+        if [ -n "$ip" ]; then
+          ip link set "$1" master "$br"
+        else
+          brctl addif $br "$1"
+        fi
+        exit    # exit with status of the previous command
+    fi
+done
+
+echo "W: $0: no bridge for guest interface found" >&2
+```
+
