@@ -26,7 +26,7 @@ mkfs.ext4 -F -L ROOTFS ubuntu-20.04-rootfs.img
 mkdir ubuntu
 sudo mount ubuntu-20.04-rootfs.img ubuntu
 sudo tar -xvf ubuntu-base-20.04.1-base-arm64.tar.gz -C ubuntu
-sudo cp /usr/bin/qemu-aarch64-static ubuntu/etc/bin
+sudo cp /usr/bin/qemu-aarch64-static ubuntu/usr/bin
 sudo cp /etc/resolv.conf ubuntu/etc/resolv.conf
 sudo chroot ubuntu # change root
 ###################################
