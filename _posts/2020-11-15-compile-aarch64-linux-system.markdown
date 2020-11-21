@@ -8,6 +8,7 @@ title: 编译aarch64 linux系统
 ```shell
 sudo apt install qemu qemu-system
 sudo apt install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev bison flex libelf-dev bc
+sudo apt install dhcpcd5 net-tools network-manager iproute2 iproute2-doc inetutils-ping udev sudo ssh
 ```
 
 ###### 内核编译
