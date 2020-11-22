@@ -30,14 +30,18 @@ sudo cp /usr/bin/qemu-aarch64-static ubuntu/usr/bin
 sudo cp /etc/resolv.conf ubuntu/etc/resolv.conf
 sudo chroot ubuntu # change root
 ###################################
-useradd -G sudo -m -s /bin/bash hsfengbyte
-passwd hsfengbyte
+useradd -G sudo -m -s /bin/bash username
+passwd username
 
 echo "hsfengbyte" > /etc/hostname
 echo "127.0.0.1 localhost.localdomain localhost" > /etc/hosts
 apt update
 apt upgrade
 apt install gcc cmake make
+
+# basic installation
+apt install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev bison flex libelf-dev bc
+apt install dhcpcd5 net-tools network-manager iproute2 iproute2-doc inetutils-ping udev sudo ssh
 
 exit # exit
 ###################################

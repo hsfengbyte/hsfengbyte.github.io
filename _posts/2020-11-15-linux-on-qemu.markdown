@@ -1,77 +1,30 @@
 ---
 layout: post
-title: 编译aarch64 linux系统
+title: Linux on qemu
 ---
 
-###### 安装软件
+###### 运行环境
+
+安装Qemu
 
 ```shell
 sudo apt install qemu qemu-system
-sudo apt install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev bison flex libelf-dev bc
-sudo apt install dhcpcd5 net-tools network-manager iproute2 iproute2-doc inetutils-ping udev sudo ssh
 ```
 
-###### 内核编译
-
-内核下载：
+内核下载
 
 <https://www.kernel.org>
 
-交叉编译器下载：
+交叉编译器下载
 
 <https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads>
+
+更新环境
 
 ```shell
 # update .bashrc
 source .bashrc
-
-# linux compile
-make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
-make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
-make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
 ```
-
-###### QEMU启动
-
-run with nographic:
-
-```shell
-sudo qemu-system-aarch64 \
-	-M virt \
-	-cpu cortex-a53 \
-	-m 1024M \
-	-kernel path/arch/arm64/boot/zImage \
-	-nographic \
-	-append "root=/dev/mmcblk0 console=ttyAMA0" \
-	-sd path/ubuntu-20.04-rootfs.ext4
-```
-
-run with graphic:
-
-```shell
-sudo qemu-system-arm \
-	-M virt \
-	-cpu cortex-a53 \
-	-m 1024M \
-	-kernel path/arch/arm64/boot/zImage \
-	-append "root=/dev/mmcblk0 rw console=tty0" \
-	-sd path/ubuntu-20.04-rootfs.ext4
-```
-
-run with net:
-
-```shell
-sudo qemu-system-arm \
-	-M virt \
-	-cpu cortex-a53 \
-	-m 1024M \
-	-kernel path/arch/arm64/boot/zImage \
-	-append "root=/dev/mmcblk0 rw console=tty0" \
-	-sd path/ubuntu-20.04-rootfs.ext4 \
-	-net nic -net tap,ifname=tap0
-```
-
-`备注`：qemu -dts xxx.dtb
 
 ###### 网络设置
 
@@ -205,3 +158,68 @@ done
 echo "W: $0: no bridge for guest interface found" >&2
 ```
 
+
+###### Linux on qemu
+
+x86_64
+
+```shell
+### compile.sh
+
+make defconfig
+make menuconfig
+make
+
+### run.sh
+#!/bin/bash
+
+qemu-system-x86_64 -smp 4 -m 4096 -kernel linux/arch/x86_64/boot/bzImage -append "root=/dev/sda rw" -drive format=raw,file=ubuntu.ext4 -net nic -net user
+
+# qemu-system-x86_64 -smp 1 -m 512 -kernel linux/arch/x86_64/boot/bzImage -append "root=/dev/sda rw" -drive format=raw,file=ubuntu.ext4 -net nic -net user --enable-kvm
+
+# qemu-system-x86_64 -smp 4 -m 4096 -kernel linux/arch/x86_64/boot/bzImage -append "root=/dev/sda rw" -drive format=raw,file=ubuntu.ext4 -net nic -net tap,ifname=tap0
+
+# qemu-system-x86_64 -smp 4 -m 4096 -kernel linux/arch/x86_64/boot/bzImage -append "root=/dev/sda rw" -drive format=raw,file=ubuntu.ext4 -net nic -net tap,ifname=tap0 --enable-kvm
+```
+
+arm
+
+```shell
+### compile.sh
+
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- vexpress_defconfig
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- menuconfig
+make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf-
+
+### run.sh
+#!/bin/bash
+
+qemu-system-arm -M vexpress-a9 -m 512M -kernel linux/arch/arm/boot/zImage -dtb linux/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -append "root=/dev/mmcblk0 rw console=ttyAMA0" -sd ubuntu-arm.ext4 -net nic -net user
+
+# qemu-system-arm -M vexpress-a9 -m 512M -kernel linux/arch/arm/boot/zImage -dtb linux/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic -append "root=/dev/mmcblk0 rw console=ttyAMA0" -sd ubuntu-arm.ext4 -net nic -net user
+
+# qemu-system-arm -M vexpress-a9 -m 512M -kernel linux/arch/arm/boot/zImage -dtb linux/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic -append "root=/dev/mmcblk0 rw console=ttyAMA0" -sd ubuntu-arm.ext4 --enable-kvm
+
+# qemu-system-arm -M vexpress-a9 -m 512M -kernel linux/arch/arm/boot/zImage -dtb linux/arch/arm/boot/dts/vexpress-v2p-ca9.dtb -nographic -append "root=/dev/mmcblk0 rw console=ttyAMA0" -sd ubuntu-arm.ext4 -net nic -net tap,ifname=tap0
+```
+
+arm64
+
+```shell
+### compile.sh
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
+
+### run.sh
+#!/bin/bash
+
+qemu-system-aarch64 -machine virt -cpu cortex-a53 -m 1024M -kernel linux/arch/arm64/boot/Image -append "root=/dev/vda rw" -hda ubuntu-arm64.ext4 -net nic -net user
+
+# qemu-system-aarch64 -machine virt -cpu cortex-a53 -m 1024M -kernel linux/arch/arm64/boot/Image -append "root=/dev/vda rw console=ttyAMA0" -hda ubuntu-arm64.ext4 -net nic -net user
+
+# qemu-system-aarch64 -machine virt -cpu cortex-a53 -m 1024M -kernel linux/arch/arm64/boot/Image -nographic -append "root=/dev/vda rw console=ttyAMA0" -hda ubuntu-arm64.ext4 -net nic -net user
+
+# qemu-system-aarch64 -machine virt -cpu cortex-a53 -m 1024M -kernel linux/arch/arm64/boot/Image -append "root=/dev/vda rw console=ttyAMA0" -hda ubuntu-arm64.ext4 -net nic -net tap,ifname=tap0
+```
