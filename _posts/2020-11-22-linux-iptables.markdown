@@ -81,6 +81,7 @@ iptables还支持自己定义链。但是自己定义的链，必须是跟某种
 iptables定义规则的方式比较复杂:
 
 格式：iptables [-t table] COMMAND chain CRETIRIA -j ACTION
+
 -t table ：3个filter nat mangle
 
 COMMAND：定义如何对规则进行管理
