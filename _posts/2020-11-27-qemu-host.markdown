@@ -1,0 +1,42 @@
+---
+layout: post
+title: QEMU网络模式-host
+---
+
+###### 网络模式host
+
+
+**建立一个TAP设备，将其绑定到网桥上**
+
+```shell
+tunctl -u $(whoami) -t tap0
+```
+
+使用TAP设备
+
+```shell
+qemu -net nic -net tap,ifname=tap0
+```
+
+**安装dhcp服务**
+
+```shell
+sudo apt intall isc-dhcp-server
+```
+
+重启dhcp服务
+
+```shell
+sudo systemctl restart isc-dhcp-server
+```
+
+自动获取dhcp
+
+```
+sudo apt intall dhcpcd
+sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd
+sudo dhcpcd #获取ip
+sudo dhcpcd -k #清空ip
+```
+
