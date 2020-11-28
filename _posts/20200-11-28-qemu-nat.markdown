@@ -45,5 +45,6 @@ systemctl restart isc-dhcp-server
 iptables -t nat -A PREROUTING -p tcp -d 10.0.2.15 --dport 80 -j DNAT --to 192.168.1.2:80
 ```
 
+**存在问题：**
 
-
+1、DNS域名解析无法正常解析
