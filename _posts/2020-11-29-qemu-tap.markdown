@@ -24,7 +24,7 @@ ip addr add 192.168.0.1/24 dev tap0
 -net nic -net tap
 ```
 
-设置虚拟机IP
+设置虚拟机IP，此处enp0s3为虚拟机网卡
 
 ```shell
 ip addr add 192.168.0.2/24 dev enp0s3
