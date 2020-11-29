@@ -1,0 +1,49 @@
+---
+layout: post
+title: 用TAP方式让QEMU虚拟机与host联网
+---
+
+**网络设备**
+
+主机网卡：**enp0s3**
+
+TAP设备：**tap0**
+
+**虚拟机连接主机**
+
+初始化TAP设备
+
+```shell
+tunctl -u $(whoami) -t tap0
+ip addr add 192.168.0.1/24 dev tap0
+```
+
+虚拟机的启动命令行增加网络参数
+
+```shell
+-net nic -net tap
+```
+
+设置虚拟机IP
+
+```shell
+ip addr add 192.168.0.2/24 dev enp0s3
+```
+
+**虚拟机通过主机连接internet**
+
+现在实现了虚拟机和host的联网，如果需要虚拟机连接internet，则要在host设置NAT：
+
+```shell
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -t nat -A POSTROUTING -o enp0s3 -s 192.168.0.0/24 -j MASQUERADE
+```
+
+**虚拟机添加DNS服务器**
+
+```shell
+# /etc/resolv.conf
+...
+namserver 8.8.8.8
+```
+
