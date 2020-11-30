@@ -4,14 +4,14 @@ title: "Linux software tools"
 categories: linux
 ---
 
-###### 编辑软件
+**编辑软件**
 
 1. vim
 
-###### 通信软件
+**通信软件**
 
 1. mutt + msmtp
 
-###### 代理软件
+**代理软件**
 
 1. proxychains

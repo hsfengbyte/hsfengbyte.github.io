@@ -3,7 +3,7 @@ layout: post
 title: QEMU网络模式-bridge
 ---
 
-###### QEMU支持的网络模式
+**QEMU支持的网络模式**
 
 qemu-kvm主要向客户机提供了4种不同模式的网络。
 
@@ -15,7 +15,7 @@ qemu-kvm主要向客户机提供了4种不同模式的网络。
 
 4)直接分配网络设备的网络(包括VT-d和SR-IOV)
 
-###### 网络模式bridge
+**网络模式bridge**
 
 **建立一个bridge,将其绑定到一个可正常工作的网络接口上，同时让bridge成为连接本机与外部网络的接口。**
 
@@ -39,7 +39,7 @@ tunctl -u $(whoami) -t tap0
 qemu -net nic -net tap,ifname=tap0
 ```
 
-###### QEMU网络启动关闭脚本
+**QEMU网络启动关闭脚本**
 
 **准备qemu-ifup和qemu-ifdown脚本**
 

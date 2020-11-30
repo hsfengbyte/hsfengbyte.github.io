@@ -2,7 +2,8 @@
 layout: post
 title: thread - C++多线程
 ---
-###### 1. 线程头文件
+
+**1. 线程头文件**
 
 C++11 新标准中引入了五个头文件来支持多线程编程
 
@@ -12,7 +13,7 @@ C++11 新标准中引入了五个头文件来支持多线程编程
 `<condition_variable>`：该头文件主要声明了与条件变量相关的类，包括 std::condition_variable 和 std::condition_variable_any。
 `<future>`：该头文件主要声明了 std::promise, std::package_task 两个 Provider 类，以及 std::future 和 std::shared_future 两个 Future 类，另外还有一些与之相关的类型和函数，std::async() 函数就声明在此头文件中。
 
-###### 2. 线程异步
+**2. 线程异步**
 
 ```c++
 #include<thread>  
@@ -39,7 +40,7 @@ int main()
 }
 ```
 
-###### 3. 线程睡眠
+**3. 线程睡眠**
 
 ```c++
 #include<thread>  
@@ -60,7 +61,7 @@ int main()
 }
 ```
 
-###### 4. 线程交换
+**4. 线程交换**
 
 ```c++
 #include<thread>  
@@ -94,7 +95,7 @@ thread1' id is 4724
 thread2' id is 4836
 ```
 
-###### 5. 线程移动
+**5. 线程移动**
 
 ```c++
 #include<thread>  
@@ -116,7 +117,7 @@ thread1' id is 5620
 thread2' id is 5620
 ```
 
-###### 6. 线程传参
+**6. 线程传参**
 
 ```c++
 #include<thread>  

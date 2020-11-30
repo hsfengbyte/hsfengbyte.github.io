@@ -3,13 +3,13 @@ layout: post
 title: qemu-system-x86_64
 ---
 
-###### 环境准备
+**环境准备**
 
 ```shell
 sudo apt install qemu qemu-system
 ```
 
-###### 编译内核
+**编译内核**
 
 ```shell
 make help
@@ -18,7 +18,7 @@ make munuconfig
 make
 ```
 
-###### 启动内核
+**启动内核**
 
 ```shell
 qemu-system-x86_64 \
@@ -27,7 +27,7 @@ qemu-system-x86_64 \
 	-kernel linux/arch/x86/boot/bzImage
 ```
 
-###### 制作磁盘镜像
+**制作磁盘镜像**
 
 制作
 

@@ -3,7 +3,7 @@ layout: post
 title: Linux on qemu
 ---
 
-###### 运行环境
+**运行环境**
 
 安装Qemu
 
@@ -26,7 +26,7 @@ sudo apt install qemu qemu-system
 source .bashrc
 ```
 
-###### 网络设置
+**网络设置**
 
 添加br0和tap0:
 
@@ -159,7 +159,7 @@ echo "W: $0: no bridge for guest interface found" >&2
 ```
 
 
-###### Linux on qemu
+**Linux on qemu**
 
 x86_64
 
