@@ -1,6 +1,6 @@
 ---
 layout: post
-title: QEMU网络模式-bridge
+title: QEMU网络模式
 ---
 
 **一、QEMU支持的网络模式**
