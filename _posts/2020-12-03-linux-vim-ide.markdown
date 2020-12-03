@@ -81,5 +81,43 @@ tags生成命令：
 ctags -R --C-kinds=+p --fields=+aS --extra=+q
 ```
 
+**taglist**
 
+下载地址：<https://github.com/yegappan/taglist>
+
+配置
+
+```shell
+let Tlist_Show_One_File=1 "不同bai时显示多个文件du的zhitag，只显示当前文件的
+let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一dao个窗口，则退出vim
+let Tlist_Ctags_Cmd="/usr/bin/ctags" "将taglist与zhuanctags关联 ！
+```
+
+操作命令：
+
+":TlistToggle"：打开左边的tag窗口，再输一次自动关闭，按ctrl+w可以在窗口之间进行切换
+
+":TlistOpen"：Open and jump to the taglist window. 
+
+":TlistClose"：Close the taglist window.
+
+":TlistToggle"：Open or close (toggle) the taglist window.
+
+在taglist中的一些操作：
+
+: 跳转到光标处tag的源文件(就是回车键)
+
+o : 打开新窗口，并跳转到光标处tag的源文件。
+
+p : 与
+
+t : 打开新tab并跳转到光标处tag的源文件。
+
+: 显示光标处tag的函数原型
+
+\+ : 打开tag组
+
+\- : 收拢tag组
+
+x : 最大化／还原
 
