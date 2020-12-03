@@ -71,11 +71,15 @@ filetype plugin on
 
 **omnicppcomplete**
 
-下载地址：<http://vim.sourceforge.net/scripts/script.php?script_id=159>
+下载地址：<http://www.vim.org/scripts/script.php?script_id=1520>
 
 安装：在~/.vim目录下解开压缩包
 
-tags生成命令：ctags -R --C-kinds=+p --fields=+aS --extra=+q
+tags生成命令：
+
+```shell
+ctags -R --C-kinds=+p --fields=+aS --extra=+q
+```
 
 
 
