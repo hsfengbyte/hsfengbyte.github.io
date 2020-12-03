@@ -71,6 +71,8 @@ filetype plugin on
 
 **omnicppcomplete**
 
+功能：补全结构体的成员以及类成员
+
 下载地址：<http://www.vim.org/scripts/script.php?script_id=1520>
 
 安装：在~/.vim目录下解开压缩包
@@ -121,3 +123,15 @@ t : 打开新tab并跳转到光标处tag的源文件。
 
 x : 最大化／还原
 
+**echofunc**
+
+功能：自动提示函数原型
+
+下载地址：<http://www.vim.org/scripts/script.php?script_id=1735>
+
+定义两个快捷键来切换函数的不同定义。
+
+```shell
+let g:EchoFuncKeyNext='<S-n>' 
+let g:EchoFuncKeyPrev='<S-p>' 
+```
