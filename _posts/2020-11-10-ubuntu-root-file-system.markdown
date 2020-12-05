@@ -42,7 +42,9 @@ apt install gcc cmake make
 
 # basic installation
 apt install vim libncurses5-dev gcc make git exuberant-ctags libssl-dev bison flex libelf-dev bc
-apt install dhcpcd5 net-tools network-manager iproute2 iproute2-doc inetutils-ping udev sudo ssh
+apt install dhcpcd5 net-tools network-manager iproute2 iproute2-doc inetutils-ping udev
+sudo ssh
+apt install kmod tree
 
 exit # exit
 ###################################
