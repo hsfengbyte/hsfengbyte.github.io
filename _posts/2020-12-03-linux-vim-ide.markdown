@@ -89,7 +89,7 @@ ctags -R --C-kinds=+p --fields=+aS --extra=+q
 
 配置
 
-```shell
+```
 let Tlist_Show_One_File=1 "不同bai时显示多个文件du的zhitag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1 "如果taglist窗口是最后一dao个窗口，则退出vim
 let Tlist_Ctags_Cmd="/usr/bin/ctags" "将taglist与zhuanctags关联 ！
@@ -131,7 +131,23 @@ x : 最大化／还原
 
 定义两个快捷键来切换函数的不同定义。
 
-```shell
+```
 let g:EchoFuncKeyNext='<S-n>' 
 let g:EchoFuncKeyPrev='<S-p>' 
 ```
+
+**nerdtree**
+
+nerdtree是一个用于浏览文件系统的树形资源管理。
+
+下载地址：<https://github.com/scrooloose/nerdtree>
+
+vimrc配置信息：
+
+```
+let NERDTreeWinPos='right'
+let NERDTreeWinSize=30
+map <F2> :NERDTreeToggle<CR>
+```
+
+配置之后可以使用`:NERDTree`或者配置的快捷键`F2`开启。
