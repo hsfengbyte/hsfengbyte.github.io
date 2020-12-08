@@ -151,3 +151,38 @@ map <F2> :NERDTreeToggle<CR>
 ```
 
 配置之后可以使用`:NERDTree`或者配置的快捷键`F2`开启。
+
+
+**pathogen**
+
+```
+pathogen一般作为vim新手的第一个插件，用来统一管理vim插件包，
+```
+
+官方解释：非常容易的管理你的 ‘runtimepath’ ，在实际项目中，vim-pathogen可以在它的私有文件夹下非常轻松的安装插件和管理运行时文件
+
+**安装**
+
+复制以下代码到你的终端
+
+```
+mkdir -p ~/.vim/autoload ~/.vim/bundle &&
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+```
+
+添加以下代码到你的.vimrc 文件中(文件位于用户的家目录下，如果不存在该文件，可以新建一个)
+
+```
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+```
+
+此时pathogen已经成功安装，可以安装以下插件测试下
+
+```
+cd ~/.vim/bundle &&
+git clone https://github.com/tpope/vim-sensible.git
+
+```
+参考地址： <https://github.com/tpope/vim-pathogen>
