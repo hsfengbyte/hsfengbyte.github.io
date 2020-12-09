@@ -73,7 +73,11 @@ filetype plugin on
 
 功能：补全结构体的成员以及类成员
 
-下载地址：<http://www.vim.org/scripts/script.php?script_id=1520>
+下载地址：
+
+[http://www.vim.org/scripts/script.php?script_id=1520](http://www.vim.org/scripts/script.php?script_id=1520)
+
+[https://github.com/vim-scripts/OmniCppComplete](https://github.com/vim-scripts/OmniCppComplete)
 
 安装：在~/.vim目录下解开压缩包
 
@@ -186,3 +190,9 @@ git clone https://github.com/tpope/vim-sensible.git
 
 ```
 参考地址： <https://github.com/tpope/vim-pathogen>
+
+**SuperTab**
+
+自动补全功能，给了Tab键“超能力”的 SuperTab 插件。
+
+下载地址：[https://github.com/ervandew/supertab.git](https://github.com/ervandew/supertab.git)
