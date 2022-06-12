@@ -33,3 +33,31 @@ tags: Java SpringBoot
 
 以上各种容器级别 `PostProcessor` 接口之间的继承关系:
 
+```mermaid
+graph BT;
+    BeanDefinitionRegistryPostProcessor-->BeanFactoryPostProcessor;
+```
+
+以上各种 `bean` 级别 `BeanPostProcessor` 接口之间的继承关系:
+
+```mermaid
+graph BT;
+    SmartInstantiationAwareBeanPostProcessor-->InstantiationAwareBeanPostProcessor;
+    InstantiationAwareBeanPostProcessor-->BeanPostProcessor;
+    MergedBeanDefinitionPostProcessor-->BeanPostProcessor;
+    DestructionAwareBeanPostProcessor-->BeanPostProcessor;
+```
+
+**参考文章**
+
+[Spring各种PostProcessor : BeanDefinitionRegistryPostProcessor](https://blog.csdn.net/andy_zhang2007/article/details/86318719)
+
+[Spring各种PostProcessor : BeanFactoryPostProcessor](https://blog.csdn.net/andy_zhang2007/article/details/86318691)
+
+[Spring各种PostProcessor : BeanPostProcessor](https://blog.csdn.net/andy_zhang2007/article/details/86318633)
+
+[Springboot 应用常见的BeanPostProcessor清单](https://blog.csdn.net/andy_zhang2007/article/details/86105378)
+
+[Spring-单例bean创建过程小结](https://blog.csdn.net/andy_zhang2007/article/details/86499574)
+
+原文：[Spring的各种PostProcessor](https://blog.csdn.net/andy_zhang2007/article/details/78595558)

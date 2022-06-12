@@ -76,3 +76,5 @@ header:
       tr      : &TR       Hakkında
       # @end locale config
     url: /about
+  - title: Github
+    url: https://github.com/hsfengbyte/hsfengbyte.github.io
