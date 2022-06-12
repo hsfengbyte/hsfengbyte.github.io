@@ -5,6 +5,8 @@ tags: Linux
 
 Iproute2是一个在Linux下的高级网络管理工具软件。实际上，它是通过rtnetlink sockets方式动态配置内核的一些小工具组成的，从Linux2.2内核开始，Alexey Kuznetsov 实现了通过rtnetlink sockets用来配置网络协议栈，它是一个现代的强大的接口。
 
+<!--more-->
+
 ### 管理IP
 
 ```shell

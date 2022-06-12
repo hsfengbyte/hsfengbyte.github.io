@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: about
 titles:
   # @start locale config
   en      : &EN       About

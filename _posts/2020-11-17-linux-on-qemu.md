@@ -5,6 +5,8 @@ tags: Linux Qemu
 
 使用qemu运行linux系统，使用网桥连通网络。
 
+<!--more-->
+
 **运行环境**
 
 安装Qemu

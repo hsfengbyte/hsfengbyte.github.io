@@ -5,6 +5,8 @@ tags: Java
 
 在java并发包下各种同步组件的底层实现中，LockSupport的身影处处可见。JDK中的定义为用来创建锁和其他同步类的线程阻塞原语。
 
+<!--more-->
+
 ```
 *Basic thread blocking primitives for creating locks and other
 *synchronization classes.

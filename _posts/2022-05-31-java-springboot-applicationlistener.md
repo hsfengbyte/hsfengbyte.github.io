@@ -5,6 +5,8 @@ tags: Java SpringBoot
 
 在 SpringBoot 的启动过程中，会通过 SPI 机制去加载 spring.factories 下面的一些类，这里面就包括了事件相关的类。
 
+<!--more-->
+
 - SpringApplicationRunListener
 
 ```properties

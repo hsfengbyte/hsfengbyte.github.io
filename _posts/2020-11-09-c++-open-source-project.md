@@ -5,6 +5,8 @@ tags: C++
 
 记录经典 C++ 开源项目
 
+<!--more-->
+
 ### 1. FreeNos
 
 <https://github.com/Neirth/FreeNOS>

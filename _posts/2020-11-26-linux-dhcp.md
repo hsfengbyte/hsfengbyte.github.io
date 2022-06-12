@@ -5,6 +5,8 @@ tags: Linux
 
 简单介绍在linux系统上搭建dhcp服务实现域名解析服务。
 
+<!--more-->
+
 安装DHCP服务软件
 
 ```shell

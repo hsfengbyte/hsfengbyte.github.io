@@ -5,6 +5,8 @@ tags: Java
 
 jdk中独占锁的实现除了使用关键字synchronized外,还可以使用ReentrantLock。虽然在性能上ReentrantLock和synchronized没有什么区别，但ReentrantLock相比synchronized而言功能更加丰富，使用起来更为灵活，也更适合复杂的并发场景。
 
+<!--more-->
+
 # ReentrantLock和synchronized的相同点
 
 ## ReentrantLock是独占锁且可重入的

@@ -5,6 +5,8 @@ tags: Java
 
 CopyOnWriteArraySet相对CopyOnWriteArrayList用来存储不重复的对象，是线程安全的。虽然继承了AbstractSet类，但CopyOnWriteArraySet与HashMap 完全不同，内部是用CopyOnWriteArrayList实现的，实现不重复的特性也是直接调用CopyOnWriteArrayList的方法实现的，感觉加的最有用的函数就是eq函数判断对象是否相同。
 
+<!--more-->
+
 # 成员变量
 
 ```java

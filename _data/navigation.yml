@@ -75,4 +75,4 @@ header:
       fr-LU   : *FR
       tr      : &TR       Hakkında
       # @end locale config
-    url: /about.html
+    url: /about

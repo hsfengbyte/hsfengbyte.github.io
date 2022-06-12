@@ -5,6 +5,8 @@ tags: Ubuntu
 
 Ubuntu根文件系统制作，以及基本开发包安装。
 
+<!--more-->
+
 ### 1. 必需软件
 
 ```shell

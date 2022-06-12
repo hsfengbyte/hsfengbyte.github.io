@@ -5,6 +5,8 @@ tags: Java SpringBoot
 
 `Spring` 框架提供了几种 `PostProcessor` 接口用于建模对容器或者`bean`的后置处理器，它们定义了一些方法，这些方法在特定的时机会被调用。通过这种机制，框架自身或者应用开发人员有机会在不侵入容器或者`bean`核心逻辑的情况下为容器或者`bean`做针对某些特定方面的定制或者扩展：能力增强，属性设置，内容修改，对象代理，甚至直接替换整个`bean`。
 
+<!--more-->
+
 `Spring` 提供的 `PostProcessor` 接口有如下几种 ：
 
 - `BeanDefinitionRegistryPostProcessor` – `BeanDefinitionRegistry` 后置处理器 – 容器级别
