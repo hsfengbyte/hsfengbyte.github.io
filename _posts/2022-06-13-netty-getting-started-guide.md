@@ -1,6 +1,6 @@
 ---
-title: Netty 入门指南
-tags: Netty
+title: Nginx 入门指南
+tags: Nginx
 ---
 
 # Nginx是什么？
